@@ -37,7 +37,8 @@ function App() {
         info.map((item) => {
           return {
             name: item.name,
-            image: item.sprites.other["official-artwork"].front_default,
+            imageUrl: item.sprites.other["official-artwork"].front_default,
+            id: item.id,
           };
         })
       );
