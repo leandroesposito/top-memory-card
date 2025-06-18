@@ -1,6 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import "./App.css";
 import Form from "./components/Form.jsx";
+import Header from "./components/Header.jsx";
+import ScoreViewer from "./components/ScoreViewer.jsx";
 
 const gameSizes = [4, 6, 8, 10, 12, 14];
 const pageSize = gameSizes[gameSizes.length - 1];
@@ -57,6 +59,10 @@ function App() {
 
   return (
     <>
+      <Header />
+      <main>
+        <ScoreViewer currentScore={currentScore} bestScore={bestScore} />
+      </main>
       <Form
         gameSizes={gameSizes}
         gameIsReady={gameIsReady}
