@@ -54,7 +54,7 @@ function App() {
   function handleSubmit(event) {
     const form = event.target.closest("form");
     const formData = new FormData(form);
-    const gameSize = formData.get("game-size");
+    const gameSize = parseInt(formData.get("game-size"));
 
     setCurrentScore(0);
     setBestScore(0);
