@@ -3,6 +3,7 @@ import "./App.css";
 import Form from "./components/Form.jsx";
 import Header from "./components/Header.jsx";
 import ScoreViewer from "./components/ScoreViewer.jsx";
+import Game from "./components/Game.jsx";
 
 const gameSizes = [4, 6, 8, 10, 12, 14];
 const pageSize = gameSizes[gameSizes.length - 1];
@@ -12,7 +13,7 @@ const namesApi = "https://pokeapi.co/api/v2/pokemon";
 function App() {
   const ignoreFetch = useRef(false);
   const [pokemonsInfo, setPokemonsInfo] = useState([]);
-  const [numCards, serNumCards] = useState(0);
+  const [gameItems, setGameItems] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
 
@@ -50,11 +51,25 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
-    console.log([pokemonsInfo.length]);
-  }, [pokemonsInfo.length]);
+  function handleSubmit(event) {
+    const form = event.target.closest("form");
+    const formData = new FormData(form);
+    const gameSize = formData.get("game-size");
 
-  function handleSubmit(event) {}
+    setCurrentScore(0);
+    setBestScore(0);
+    initGame(gameSize);
+  }
+
+  function initGame(gameSize) {
+    const startIndex = Math.floor(
+      Math.random() * (pokemonsInfo.length - gameSize)
+    );
+
+    const newGameItems = pokemonsInfo.slice(startIndex, startIndex + gameSize);
+
+    setGameItems(newGameItems);
+  }
 
   const gameIsReady = pokemonsInfo.length > 0;
 
@@ -64,11 +79,16 @@ function App() {
       <main>
         <ScoreViewer currentScore={currentScore} bestScore={bestScore} />
       </main>
-      <Form
-        gameSizes={gameSizes}
-        gameIsReady={gameIsReady}
-        handleSubmit={handleSubmit}
-      />
+
+      {gameItems.length === 0 ? (
+        <Form
+          gameSizes={gameSizes}
+          gameIsReady={gameIsReady}
+          handleSubmit={handleSubmit}
+        />
+      ) : (
+        <Game pokemonsInfo={gameItems} />
+      )}
     </>
   );
 }
