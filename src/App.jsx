@@ -71,6 +71,14 @@ function App() {
     setGameItems(newGameItems);
   }
 
+  function incrementScore() {
+    const newCurrenScore = currentScore + 1;
+    setCurrentScore(newCurrenScore);
+    if (newCurrenScore > bestScore) {
+      setBestScore(newCurrenScore);
+    }
+  }
+
   const gameIsReady = pokemonsInfo.length > 0;
 
   return (
@@ -87,7 +95,7 @@ function App() {
           handleSubmit={handleSubmit}
         />
       ) : (
-        <Game pokemonsInfo={gameItems} />
+        <Game pokemonsInfo={gameItems} incrementScore={incrementScore} />
       )}
     </>
   );
