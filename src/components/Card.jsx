@@ -14,7 +14,10 @@ export default function Card({ name, imageUrl, handleFail, handleSuccess }) {
   }
 
   return (
-    <div className="card" onClick={handleClick}>
+    <div
+      className={`card ${wasClicked === true ? "clicked" : ""}`} // REMOVE LATER
+      onClick={handleClick}
+    >
       <div className="image-container">
         <img src={imageUrl} alt={name} />
       </div>
