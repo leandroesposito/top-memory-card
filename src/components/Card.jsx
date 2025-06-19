@@ -15,7 +15,7 @@ export default function Card({ name, imageUrl, handleFail, handleSuccess }) {
 
   return (
     <div className="card" onClick={handleClick}>
-      <div className="imageContainer">
+      <div className="image-container">
         <img src={imageUrl} alt={name} />
       </div>
       <div className="name">{name}</div>
