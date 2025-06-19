@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/Card.css";
 
 export default function Card({ name, imageUrl, handleFail, handleSuccess }) {
   const [wasClicked, setWasClicked] = useState(false);

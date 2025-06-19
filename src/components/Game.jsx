@@ -1,4 +1,5 @@
 import Card from "./Card.jsx";
+import "../styles/Game.css";
 
 export default function Game({ pokemonsInfo, incrementScore }) {
   function handleFail() {}
