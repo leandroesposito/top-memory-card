@@ -95,7 +95,7 @@ function App() {
           handleSubmit={handleSubmit}
         />
       ) : (
-        <Game pokemonsInfo={gameItems} incrementScore={incrementScore} />
+        <Game initialPokemonsInfo={gameItems} incrementScore={incrementScore} />
       )}
     </>
   );
