@@ -1,3 +1,5 @@
+import "../styles/Form.css";
+
 export default function Form({ gameSizes, gameIsReady, handleSubmit }) {
   return (
     <form>

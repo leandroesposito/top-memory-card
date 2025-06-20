@@ -1,3 +1,5 @@
+import "../styles/ScoreViewer.css";
+
 export default function ScoreViewer({ currentScore, bestScore }) {
   return (
     <div className="score-viewer">

@@ -1,0 +1,40 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.form-row {
+  border: 1px solid grey;
+  width: 6rem;
+  border-radius: 1rem;
+  transition: border-color 0.5s;
+}
+
+.form-row:has(input:checked) {
+  border: 1px solid rgb(0, 180, 0);
+}
+.form-row:hover {
+  border: 1px solid rgb(0, 105, 0);
+}
+
+label {
+  cursor: pointer;
+  display: block;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+input {
+  display: none;
+}
