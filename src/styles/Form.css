@@ -24,6 +24,11 @@ fieldset {
 .form-row:has(input:checked) {
   border: 1px solid rgb(0, 180, 0);
 }
+
+.form-row:has(input:focus) {
+  border: 1px solid rgb(0, 255, 0);
+}
+
 .form-row:hover {
   border: 1px solid rgb(0, 105, 0);
 }
@@ -36,5 +41,6 @@ label {
 }
 
 input {
-  display: none;
+  position: absolute;
+  scale: 0;
 }

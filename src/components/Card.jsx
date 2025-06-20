@@ -20,7 +20,7 @@ export default function Card({
   }
 
   return (
-    <div
+    <button
       className={`card ${
         showClickStatus === true && wasClicked === true ? "clicked" : ""
       }`}
@@ -30,6 +30,6 @@ export default function Card({
         <img src={imageUrl} alt={name} />
       </div>
       <div className="name">{name}</div>
-    </div>
+    </button>
   );
 }
