@@ -16,6 +16,7 @@ function App() {
   const [gameItems, setGameItems] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -72,13 +73,19 @@ function App() {
 
   function incrementScore() {
     const newCurrenScore = currentScore + 1;
-    setCurrentScore(newCurrenScore);
     if (newCurrenScore > bestScore) {
       setBestScore(newCurrenScore);
     }
+
+    if (newCurrenScore === gameItems.length) {
+      reset("You've won!!", newCurrenScore);
+    }
+
+    setCurrentScore(newCurrenScore);
   }
 
-  function reset() {
+  function reset(message, score = currentScore) {
+    setMessage(message + ` Your score was ${score}.`);
     setGameItems([]);
   }
 
@@ -89,6 +96,7 @@ function App() {
       <Header />
       <main>
         <ScoreViewer currentScore={currentScore} bestScore={bestScore} />
+        {message !== "" && <div className="message">{message}</div>}
       </main>
 
       {gameItems.length === 0 ? (
