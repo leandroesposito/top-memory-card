@@ -57,9 +57,13 @@ function App() {
     const formData = new FormData(form);
     const gameSize = parseInt(formData.get("game-size"));
 
-    setCurrentScore(0);
-    initGame(gameSize);
-    setMessage("");
+    if (Number.isNaN(gameSize)) {
+      setMessage("You have to select a number of cards to play with!");
+    } else {
+      setCurrentScore(0);
+      initGame(gameSize);
+      setMessage("");
+    }
   }
 
   function initGame(gameSize) {
