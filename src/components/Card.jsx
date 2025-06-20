@@ -10,7 +10,10 @@ export default function Card({
 }) {
   const [wasClicked, setWasClicked] = useState(false);
 
-  function handleClick() {
+  function handleClick(event) {
+    const button = event.target;
+    button.blur();
+
     if (wasClicked === false) {
       setWasClicked(true);
       handleSuccess();
