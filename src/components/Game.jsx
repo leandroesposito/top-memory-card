@@ -32,17 +32,23 @@ export default function Game({
   }
 
   return (
-    <div className="game">
-      {pokemonsInfo.map((p) => (
-        <Card
-          name={p.name}
-          imageUrl={p.imageUrl}
-          key={p.id}
-          handleFail={handleFail}
-          handleSuccess={handleSuccess}
-          showClickStatus={trainingMode}
-        />
-      ))}
-    </div>
+    <>
+      <div className="message">
+        Click each tile once to win the game. After every click, the tiles will
+        shuffle to test your memory.
+      </div>
+      <div className="game">
+        {pokemonsInfo.map((p) => (
+          <Card
+            name={p.name}
+            imageUrl={p.imageUrl}
+            key={p.id}
+            handleFail={handleFail}
+            handleSuccess={handleSuccess}
+            showClickStatus={trainingMode}
+          />
+        ))}
+      </div>
+    </>
   );
 }

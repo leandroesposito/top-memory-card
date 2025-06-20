@@ -19,6 +19,7 @@ export default function Form({ gameSizes, gameIsReady, handleSubmit }) {
         <input type="checkbox" value="training" name="training" id="training" />
         <label htmlFor="training">Training Mode</label>
       </div>
+      <div className="message">Training mode highlights the clicked tiles.</div>
       {gameIsReady ? (
         <button type="button" onClick={handleSubmit}>
           Play!
