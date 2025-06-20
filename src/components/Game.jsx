@@ -2,7 +2,12 @@ import Card from "./Card.jsx";
 import "../styles/Game.css";
 import { useState } from "react";
 
-export default function Game({ initialPokemonsInfo, incrementScore, reset }) {
+export default function Game({
+  initialPokemonsInfo,
+  trainingMode,
+  incrementScore,
+  reset,
+}) {
   const [pokemonsInfo, setPokemonsInfo] = useState(initialPokemonsInfo);
 
   function handleFail() {
@@ -35,6 +40,7 @@ export default function Game({ initialPokemonsInfo, incrementScore, reset }) {
           key={p.id}
           handleFail={handleFail}
           handleSuccess={handleSuccess}
+          showClickStatus={trainingMode}
         />
       ))}
     </div>

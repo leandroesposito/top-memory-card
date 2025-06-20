@@ -1,7 +1,13 @@
 import { useState } from "react";
 import "../styles/Card.css";
 
-export default function Card({ name, imageUrl, handleFail, handleSuccess }) {
+export default function Card({
+  name,
+  imageUrl,
+  handleFail,
+  handleSuccess,
+  showClickStatus,
+}) {
   const [wasClicked, setWasClicked] = useState(false);
 
   function handleClick() {
@@ -15,7 +21,9 @@ export default function Card({ name, imageUrl, handleFail, handleSuccess }) {
 
   return (
     <div
-      className={`card ${wasClicked === true ? "clicked" : ""}`} // REMOVE LATER
+      className={`card ${
+        showClickStatus === true && wasClicked === true ? "clicked" : ""
+      }`}
       onClick={handleClick}
     >
       <div className="image-container">

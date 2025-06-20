@@ -17,6 +17,7 @@ function App() {
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [message, setMessage] = useState("");
+  const [trainingMode, setTrainingMode] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -56,6 +57,7 @@ function App() {
     const form = event.target.closest("form");
     const formData = new FormData(form);
     const gameSize = parseInt(formData.get("game-size"));
+    const trainingMode = formData.get("training") !== null;
 
     if (Number.isNaN(gameSize)) {
       setMessage("You have to select a number of cards to play with!");
@@ -63,6 +65,7 @@ function App() {
       setCurrentScore(0);
       initGame(gameSize);
       setMessage("");
+      setTrainingMode(trainingMode);
     }
   }
 
@@ -113,6 +116,7 @@ function App() {
       ) : (
         <Game
           initialPokemonsInfo={gameItems}
+          trainingMode={trainingMode}
           incrementScore={incrementScore}
           reset={reset}
         />

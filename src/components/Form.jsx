@@ -15,6 +15,10 @@ export default function Form({ gameSizes, gameIsReady, handleSubmit }) {
           </div>
         ))}
       </fieldset>
+      <div className="form-row">
+        <input type="checkbox" value="training" name="training" id="training" />
+        <label htmlFor="training">Training Mode</label>
+      </div>
       {gameIsReady ? (
         <button type="button" onClick={handleSubmit}>
           Play!
