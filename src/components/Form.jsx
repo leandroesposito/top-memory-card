@@ -4,7 +4,7 @@ export default function Form({ gameSizes, gameIsReady, handleSubmit }) {
       <fieldset>
         <legend>Select number of tiles for the game.</legend>
         {gameSizes.map((gs) => (
-          <div id="form-row" key={gs}>
+          <div className="form-row" key={gs}>
             <input
               type="radio"
               value={gs}
