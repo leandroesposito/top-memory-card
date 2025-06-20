@@ -2,10 +2,12 @@ import Card from "./Card.jsx";
 import "../styles/Game.css";
 import { useState } from "react";
 
-export default function Game({ initialPokemonsInfo, incrementScore }) {
+export default function Game({ initialPokemonsInfo, incrementScore, reset }) {
   const [pokemonsInfo, setPokemonsInfo] = useState(initialPokemonsInfo);
 
-  function handleFail() {}
+  function handleFail() {
+    reset();
+  }
 
   function handleSuccess() {
     incrementScore();

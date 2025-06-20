@@ -79,6 +79,10 @@ function App() {
     }
   }
 
+  function reset() {
+    setGameItems([]);
+  }
+
   const gameIsReady = pokemonsInfo.length > 0;
 
   return (
@@ -95,7 +99,11 @@ function App() {
           handleSubmit={handleSubmit}
         />
       ) : (
-        <Game initialPokemonsInfo={gameItems} incrementScore={incrementScore} />
+        <Game
+          initialPokemonsInfo={gameItems}
+          incrementScore={incrementScore}
+          reset={reset}
+        />
       )}
     </>
   );
