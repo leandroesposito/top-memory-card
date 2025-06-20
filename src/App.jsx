@@ -57,7 +57,6 @@ function App() {
     const gameSize = parseInt(formData.get("game-size"));
 
     setCurrentScore(0);
-    setBestScore(0);
     initGame(gameSize);
   }
 
