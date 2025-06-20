@@ -105,22 +105,21 @@ function App() {
       <main>
         <ScoreViewer currentScore={currentScore} bestScore={bestScore} />
         {message !== "" && <div className="message">{message}</div>}
+        {gameItems.length === 0 ? (
+          <Form
+            gameSizes={gameSizes}
+            gameIsReady={gameIsReady}
+            handleSubmit={handleSubmit}
+          />
+        ) : (
+          <Game
+            initialPokemonsInfo={gameItems}
+            trainingMode={trainingMode}
+            incrementScore={incrementScore}
+            reset={reset}
+          />
+        )}
       </main>
-
-      {gameItems.length === 0 ? (
-        <Form
-          gameSizes={gameSizes}
-          gameIsReady={gameIsReady}
-          handleSubmit={handleSubmit}
-        />
-      ) : (
-        <Game
-          initialPokemonsInfo={gameItems}
-          trainingMode={trainingMode}
-          incrementScore={incrementScore}
-          reset={reset}
-        />
-      )}
     </>
   );
 }
