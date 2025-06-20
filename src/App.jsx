@@ -103,8 +103,10 @@ function App() {
     <>
       <Header />
       <main>
-        <ScoreViewer currentScore={currentScore} bestScore={bestScore} />
-        {message !== "" && <div className="message">{message}</div>}
+        <div className="info">
+          <div className="message">{message}</div>
+          <ScoreViewer currentScore={currentScore} bestScore={bestScore} />
+        </div>
         {gameItems.length === 0 ? (
           <Form
             gameSizes={gameSizes}
