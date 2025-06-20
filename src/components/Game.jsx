@@ -6,7 +6,7 @@ export default function Game({ initialPokemonsInfo, incrementScore, reset }) {
   const [pokemonsInfo, setPokemonsInfo] = useState(initialPokemonsInfo);
 
   function handleFail() {
-    reset();
+    reset("Game Over! You've selected the same card twice.");
   }
 
   function handleSuccess() {
