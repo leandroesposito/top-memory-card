@@ -35,3 +35,11 @@
   background-color: mediumpurple;
   font-weight: 600;
 }
+
+@media (max-width: 800px) {
+  .image-container {
+    flex: 1;
+    width: calc(100px);
+    transition: transform 0.3s;
+  }
+}
