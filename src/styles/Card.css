@@ -11,8 +11,8 @@
   cursor: pointer;
 }
 
-.card.clicked {
-  border: 5px solid red;
+.card.clicked:hover {
+  border: 2px solid rgb(0, 204, 0);
 }
 
 .image-container {
