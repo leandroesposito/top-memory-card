@@ -8,11 +8,9 @@ import Game from "./components/Game.jsx";
 const gameSizes = [4, 6, 8, 10, 12, 14];
 const pageSize = gameSizes[gameSizes.length - 1];
 
-const namesApi = "https://pokeapi.co/api/v2/pokemon";
-
 function App() {
   const ignoreFetch = useRef(false);
-  const [pokemonsInfo, setPokemonsInfo] = useState([]);
+  const [itemsInfo, setItemsInfo] = useState([]);
   const [gameItems, setGameItems] = useState([]);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
@@ -21,27 +19,24 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      let pokemonCount = await fetch(namesApi)
+      const dataApi = `https://dog.ceo/api/breeds/image/random/${pageSize}`;
+
+      let resultList = await fetch(dataApi)
         .then((res) => res.json())
-        .then((json) => json.count);
-      let offset = Math.floor(Math.random() * pokemonCount) - pageSize;
+        .then((json) => json.message);
 
-      const pokemonsApi = `https://pokeapi.co/api/v2/pokemon/?limit=${pageSize}&offset=${offset}`;
-
-      let pokemonsList = await fetch(pokemonsApi)
-        .then((res) => res.json())
-        .then((json) => json.results);
-
-      const info = await Promise.all(
-        pokemonsList.map((p) => fetch(p.url).then((res) => res.json()))
-      );
-
-      setPokemonsInfo(
-        info.map((item) => {
+      setItemsInfo(
+        resultList.map((item) => {
+          const breed = item.match(/(?<=breeds\/).*?(?=\/)/)[0];
+          // Replace "-" with " " and capitalize every word
+          const name = breed
+            .split("-")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
           return {
-            name: item.name,
-            imageUrl: item.sprites.other["official-artwork"].front_default,
-            id: item.id,
+            name,
+            imageUrl: item,
+            id: item.name,
           };
         })
       );
@@ -71,10 +66,10 @@ function App() {
 
   function initGame(gameSize) {
     const startIndex = Math.floor(
-      Math.random() * (pokemonsInfo.length - gameSize)
+      Math.random() * (itemsInfo.length - gameSize)
     );
 
-    const newGameItems = pokemonsInfo.slice(startIndex, startIndex + gameSize);
+    const newGameItems = itemsInfo.slice(startIndex, startIndex + gameSize);
 
     setGameItems(newGameItems);
   }
@@ -97,7 +92,7 @@ function App() {
     setGameItems([]);
   }
 
-  const gameIsReady = pokemonsInfo.length > 0;
+  const gameIsReady = itemsInfo.length > 0;
 
   return (
     <>
@@ -115,7 +110,7 @@ function App() {
           />
         ) : (
           <Game
-            initialPokemonsInfo={gameItems}
+            initialItemsInfo={gameItems}
             trainingMode={trainingMode}
             incrementScore={incrementScore}
             reset={reset}

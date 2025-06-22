@@ -3,12 +3,12 @@ import "../styles/Game.css";
 import { useState } from "react";
 
 export default function Game({
-  initialPokemonsInfo,
+  initialItemsInfo,
   trainingMode,
   incrementScore,
   reset,
 }) {
-  const [pokemonsInfo, setPokemonsInfo] = useState(initialPokemonsInfo);
+  const [itemsInfo, setItemsInfo] = useState(initialItemsInfo);
 
   function handleFail() {
     reset("Game Over! You've selected the same card twice.");
@@ -20,7 +20,7 @@ export default function Game({
   }
 
   function shufflePokemons() {
-    const newOrder = [...pokemonsInfo];
+    const newOrder = [...itemsInfo];
     const count = newOrder.length;
 
     for (let i = 0; i < count; i++) {
@@ -28,7 +28,7 @@ export default function Game({
       [newOrder[i], newOrder[j]] = [newOrder[j], newOrder[i]];
     }
 
-    setPokemonsInfo(newOrder);
+    setItemsInfo(newOrder);
   }
 
   return (
@@ -38,11 +38,11 @@ export default function Game({
         shuffle to test your memory.
       </div>
       <div className="game">
-        {pokemonsInfo.map((p) => (
+        {itemsInfo.map((i) => (
           <Card
-            name={p.name}
-            imageUrl={p.imageUrl}
-            key={p.id}
+            name={i.name}
+            imageUrl={i.imageUrl}
+            key={i.id}
             handleFail={handleFail}
             handleSuccess={handleSuccess}
             showClickStatus={trainingMode}
