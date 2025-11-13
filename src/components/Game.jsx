@@ -42,7 +42,7 @@ export default function Game({
           <Card
             name={i.name}
             imageUrl={i.imageUrl}
-            key={i.id}
+            key={i.imageUrl}
             handleFail={handleFail}
             handleSuccess={handleSuccess}
             showClickStatus={trainingMode}
