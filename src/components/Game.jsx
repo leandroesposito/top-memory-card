@@ -16,10 +16,10 @@ export default function Game({
 
   function handleSuccess() {
     incrementScore();
-    shufflePokemons();
+    shuffleElements();
   }
 
-  function shufflePokemons() {
+  function shuffleElements() {
     const newOrder = [...itemsInfo];
     const count = newOrder.length;
 
