@@ -16,6 +16,12 @@ This project was specifically designed to demonstrate and practice:
 ## Live Demo
 
 [View Live Demo](https://vocal-tanuki-75f07c.netlify.app/)
+\*The free servers may take a few seconds to respond on first request.
+
+## Screenshots
+
+![Home](https://github.com/leandroesposito/top-memory-card/blob/main/screenshots/1_home.png)
+![Gameplay](https://github.com/leandroesposito/top-memory-card/blob/main/screenshots/2_gameplay.png)
 
 ## What Are Side Effects?
 
@@ -509,4 +515,3 @@ useEffect(() => {
   fetchData().then(setData);
 }, [setData]); // setData is stable, not needed in deps
 ```
-
