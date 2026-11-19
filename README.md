@@ -20,8 +20,8 @@ This project was specifically designed to demonstrate and practice:
 
 ## Screenshots
 
-![Home](https://github.com/leandroesposito/top-memory-card/blob/main/screenshots/1_home.png)
-![Gameplay](https://github.com/leandroesposito/top-memory-card/blob/main/screenshots/2_gameplay.png)
+![Home](https://github.com/leandroesposito/top-memory-card/blob/main/screenshots/1_home.jpg)
+![Gameplay](https://github.com/leandroesposito/top-memory-card/blob/main/screenshots/2_gameplay.jpg)
 
 ## What Are Side Effects?
 
